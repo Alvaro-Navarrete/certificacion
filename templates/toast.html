@@ -1,0 +1,16 @@
+{% load static %}
+
+<div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header text-bg-dark">
+        <i id="icono-toast" class="{% if message.tags == 'warning' %} bi bi-exclamation-circle-fill text-warning {% elif message.tags == 'success' %} bi bi-check-circle-fill text-success {% elif message.tags == 'error' %} bi bi-x-circle-fill text-danger {% elif message.tags == 'info' %} bi bi-info-circle-fill text-info {% endif %} fs-5 px-2"></i>
+      <strong class="me-auto" id="toastTitulo">
+        {{ message.tags }} 
+      </strong>
+      <small class="text-body-secondary">just now</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body alert alert-{{ message.tags }} {% if message.tags == 'error' %}alert-danger{% endif %} m-0" role="alert" id="toastMensaje"> 
+      {{ message }} 
+    </div>
+</div>
+
